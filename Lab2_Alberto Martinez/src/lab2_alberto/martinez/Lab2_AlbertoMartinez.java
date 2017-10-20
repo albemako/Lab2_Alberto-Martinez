@@ -171,7 +171,7 @@ public class Lab2_AlbertoMartinez {
                     for (int j = 0; j < maestros.size(); j++) {
                         if(maestros.get(j).getUsuario().equalsIgnoreCase(usuario) && maestros.get(j).getContra().equalsIgnoreCase(contra)){
                             
-                            System.out.println("hola");
+                            JOptionPane.showMessageDialog(null, "Bienvenido "+ maestros.get(j).getNomrbe());
                             
                             valid=1;
                         }else{
@@ -190,7 +190,7 @@ public class Lab2_AlbertoMartinez {
                     for (int j = 0; j < alumnos.size(); j++) {
                         if(alumnos.get(j).getUsuario().equalsIgnoreCase(usuario) && alumnos.get(j).getContra().equalsIgnoreCase(contra)){
 
-                            System.out.println("hola");
+                            JOptionPane.showMessageDialog(null, "Bienvenido "+ alumnos.get(j).getNombre());
 
                             valid=1;
                         }else{
