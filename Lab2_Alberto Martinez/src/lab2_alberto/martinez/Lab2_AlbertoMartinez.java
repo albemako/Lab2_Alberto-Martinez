@@ -122,7 +122,9 @@ public class Lab2_AlbertoMartinez {
                 JOptionPane.showMessageDialog(null, "Registrado con exito!");
                 
                 int opc;
+                double dineroactual=dinero;
                 do{
+                double precio=0;
                 String s="";
                 for (Clase t : clases) {
                     if (t instanceof Clase) {
@@ -130,14 +132,60 @@ public class Lab2_AlbertoMartinez {
                     }
                 }
                 opc=Integer.parseInt(JOptionPane.showInputDialog(s))-1;
+                
+                if(clases.get(opc).alumnos.size()<clases.get(opc).max){
+                  precio=clases.get(opc).getPrecio();
+                for (int i = 0; i < 5; i++) {
+                        precio+=clases.get(opc).getPrecio()*0.20;
+                        alumno.setDinero(alumno.getDinero()-precio);
+                    }
+                if(precio>alumno.getDinero()){
+                    JOptionPane.showMessageDialog(null, "No tiene el dinero suficiente!");
+                    opc=1;
+                    alumno.setDinero(dineroactual);
+                }else{
                 clases.get(opc).alumnos.add(alumno);
                 alumno.clases.add(clases.get(opc).getSeccion());
-                
+                dineroactual=alumno.getDinero();
+                JOptionPane.showMessageDialog(null, "Usted cuenta con: L."+dineroactual);
                 opc=Integer.parseInt(JOptionPane.showInputDialog("Desea Ingresar otra? si=0/no=1"));
+                }  
+                }else{
+                    JOptionPane.showMessageDialog(null, "La seccion esta llena!");
+                    opc=0;
+                }
+                
+                
                 }while(opc==0);
+                
+                
             }
             if (op.equals("c")) {
-               
+               String opc, usuario, contra;
+               int valid=3;
+               opc=JOptionPane.showInputDialog("Desea Login como maestro o como estudiante? (esriba la palabra completa)");
+               if(opc.equalsIgnoreCase("maestro")){
+                    usuario=JOptionPane.showInputDialog("Usuario");
+                    contra=JOptionPane.showInputDialog("Contrasenia");
+                    for (int j = 0; j < maestros.size(); j++) {
+                        if(maestros.get(j).getUsuario().equalsIgnoreCase(usuario) && maestros.get(j).getContra().equalsIgnoreCase(contra)){
+                            
+                            System.out.println("hola");
+                            
+                            valid=1;
+                        }else{
+                            if(valid!=1){
+                                valid=3;
+                            }
+                        }
+                    }
+                    if(valid==3){
+                        JOptionPane.showMessageDialog(null, "Usuario o contrasenia incorrecta");
+                    }
+               }
+               if(opc.equalsIgnoreCase("estudiante")){
+                   
+               }
             }
             if (op.equals("d")) {
                 String s="";
