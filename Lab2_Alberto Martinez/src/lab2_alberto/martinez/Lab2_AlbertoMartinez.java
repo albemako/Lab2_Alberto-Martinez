@@ -106,19 +106,35 @@ public class Lab2_AlbertoMartinez {
                 String nombre, carrera, usuario, contra;
                 int  cuenta, edad;
                 double dinero;
+                Alumno alumno;
                 JOptionPane.showMessageDialog(null, "Registrar Usuario");
                 
                 nombre=JOptionPane.showInputDialog("Nombre");
                 cuenta=Integer.parseInt(JOptionPane.showInputDialog("Numero de cuenta"));
                 carrera=JOptionPane.showInputDialog("Carrera");
                 edad=Integer.parseInt(JOptionPane.showInputDialog("Edad"));
-                dinero=Double.parseDouble(JOptionPane.showInputDialog("Edad"));
+                dinero=Double.parseDouble(JOptionPane.showInputDialog("Dinero disponible"));
                 usuario=JOptionPane.showInputDialog("Usuario");
                 contra=JOptionPane.showInputDialog("Contra");
-
-                alumnos.add(new Alumno(nombre,cuenta, carrera,  edad, dinero, usuario, contra));
+                
+                alumno=new Alumno(nombre,cuenta, carrera,  edad, dinero, usuario, contra);
+                alumnos.add(alumno);
                 JOptionPane.showMessageDialog(null, "Registrado con exito!");
-               
+                
+                int opc;
+                do{
+                String s="";
+                for (Clase t : clases) {
+                    if (t instanceof Clase) {
+                       s+= ""+(clases.indexOf(t)+1)+"- "+t+"\n" ;
+                    }
+                }
+                opc=Integer.parseInt(JOptionPane.showInputDialog(s))-1;
+                clases.get(opc).alumnos.add(alumno);
+                alumno.clases.add(clases.get(opc).getSeccion());
+                
+                opc=Integer.parseInt(JOptionPane.showInputDialog("Desea Ingresar otra? si=0/no=1"));
+                }while(opc==0);
             }
             if (op.equals("c")) {
                
