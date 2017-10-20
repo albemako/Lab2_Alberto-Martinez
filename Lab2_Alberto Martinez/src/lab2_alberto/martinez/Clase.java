@@ -13,14 +13,14 @@ import java.util.ArrayList;
  */
 public class Clase {
     public String nombre;
-    public int  seccion;
+    public String  seccion;
     public int max;
     public Maestro maestro;
     public int unidades;
     public double precio;
     public ArrayList <Alumno>alumnos=new ArrayList();
 
-    public Clase(String nombre, int seccion, int max, Maestro maestro, int unidades, double precio) {
+    public Clase(String nombre, String seccion, int max, Maestro maestro, int unidades, double precio) {
         this.nombre = nombre;
         this.seccion = seccion;
         this.max = max;
@@ -39,11 +39,11 @@ public class Clase {
         this.nombre = nombre;
     }
 
-    public int getSeccion() {
+    public String getSeccion() {
         return seccion;
     }
 
-    public void setSeccion(int seccion) {
+    public void setSeccion(String seccion) {
         this.seccion = seccion;
     }
 
@@ -83,7 +83,7 @@ public class Clase {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
