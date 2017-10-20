@@ -15,7 +15,17 @@ public class Lab2_AlbertoMartinez {
         String op="";
         while ( !op.equals("s") ) {  
             if(!maestros.isEmpty()){
-                System.out.println("hola");
+                for (int i = 0; i < maestros.size(); i++) {
+                    for (int j = 0; j < maestros.get(i).clases.size(); j++) {
+                        for (int k = 0; k < clases.size(); k++) {
+                            if (maestros.get(i).clases.get(j).equals(clases.get(k).getSeccion())){
+                                if(clases.get(k).getMaestro()==null){
+                                    clases.get(k).setMaestro(maestros.get(i));  
+                                }
+                            }
+                        }
+                    }
+                }
             }
             op=JOptionPane.showInputDialog(""
                     + "a-Administracion\n"
@@ -91,9 +101,23 @@ public class Lab2_AlbertoMartinez {
                     }
                 }
                 
-               
             }
             if (op.equals("b")) {
+                String nombre, carrera, usuario, contra;
+                int  cuenta, edad;
+                double dinero;
+                JOptionPane.showMessageDialog(null, "Registrar Usuario");
+                
+                nombre=JOptionPane.showInputDialog("Nombre");
+                cuenta=Integer.parseInt(JOptionPane.showInputDialog("Numero de cuenta"));
+                carrera=JOptionPane.showInputDialog("Carrera");
+                edad=Integer.parseInt(JOptionPane.showInputDialog("Edad"));
+                dinero=Double.parseDouble(JOptionPane.showInputDialog("Edad"));
+                usuario=JOptionPane.showInputDialog("Usuario");
+                contra=JOptionPane.showInputDialog("Contra");
+
+                alumnos.add(new Alumno(nombre,cuenta, carrera,  edad, dinero, usuario, contra));
+                JOptionPane.showMessageDialog(null, "Registrado con exito!");
                
             }
             if (op.equals("c")) {
