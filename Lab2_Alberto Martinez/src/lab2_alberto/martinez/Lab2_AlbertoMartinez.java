@@ -161,10 +161,11 @@ public class Lab2_AlbertoMartinez {
                 
             }
             if (op.equals("c")) {
-               String opc, usuario, contra;
+               String usuario, contra;
+               int opc;
                int valid=3;
-               opc=JOptionPane.showInputDialog("Desea Login como maestro o como estudiante? (esriba la palabra completa)");
-               if(opc.equalsIgnoreCase("maestro")){
+               opc=Integer.parseInt(JOptionPane.showInputDialog("Desea Login como maestro o como estudiante? maestro=0/estudiante=1"));
+               if(opc==0){
                     usuario=JOptionPane.showInputDialog("Usuario");
                     contra=JOptionPane.showInputDialog("Contrasenia");
                     for (int j = 0; j < maestros.size(); j++) {
@@ -183,9 +184,25 @@ public class Lab2_AlbertoMartinez {
                         JOptionPane.showMessageDialog(null, "Usuario o contrasenia incorrecta");
                     }
                }
-               if(opc.equalsIgnoreCase("estudiante")){
-                   
-               }
+               if(opc==1){
+                    usuario=JOptionPane.showInputDialog("Usuario");
+                    contra=JOptionPane.showInputDialog("Contrasenia");
+                    for (int j = 0; j < alumnos.size(); j++) {
+                        if(alumnos.get(j).getUsuario().equalsIgnoreCase(usuario) && alumnos.get(j).getContra().equalsIgnoreCase(contra)){
+
+                            System.out.println("hola");
+
+                            valid=1;
+                        }else{
+                            if(valid!=1){
+                                valid=3;
+                            }
+                        }
+                    }
+                    if(valid==3){
+                        JOptionPane.showMessageDialog(null, "Usuario o contrasenia incorrecta");
+                    }
+                }
             }
             if (op.equals("d")) {
                 String s="";
